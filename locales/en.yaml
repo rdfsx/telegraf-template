@@ -1,4 +1,5 @@
 name: English
+start: This is a bot.
 help: |
   <b>Bot</b> allows you to see how Telegraf bots can be built.
 language: Please, select the language.
