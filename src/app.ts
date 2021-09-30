@@ -20,7 +20,7 @@ bot.use(i18n.middleware(), attachI18N)
 // Commands
 bot.command(['help', 'start'], sendHelp)
 bot.command('language', sendLanguage)
-bot.on("text", (ctx) => {return ctx.reply(ctx.message.text)})
+bot.on("text", sendEcho)
 // Actions
 bot.action(localeActions, setLanguage)
 // Errors

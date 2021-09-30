@@ -1,7 +1,5 @@
 import { Context } from 'telegraf'
 
-export function sendEcho(ctx: Context) {
-  console.log(ctx)
-  return ctx.reply(ctx.message.text)
+export async function sendEcho(ctx: Context<any>) {
+  await ctx.reply(ctx.message.text)
 }
-
