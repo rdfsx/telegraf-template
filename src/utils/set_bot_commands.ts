@@ -5,6 +5,6 @@ export async function setCommands(bot: Telegraf) {
     [
       {command: "start", description: "Start bot"},
       {command: "help", description: "Start bot"},
-    ],
+    ]
   )
 }

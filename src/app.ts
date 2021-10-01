@@ -28,7 +28,7 @@ bot.action(localeActions, setLanguage)
 // Errors
 bot.catch(console.error)
 // Start bot
-setCommands(bot).then()
+setCommands(bot)
 bot.launch().then(() => {
   bot.telegram.sendMessage(process.env.ADMIN, `Bot ${bot.botInfo.username} is up and running`).then()
   console.info(`Bot ${bot.botInfo.username} is up and running`)
