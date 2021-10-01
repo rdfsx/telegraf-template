@@ -1,7 +1,7 @@
-import { Telegraf } from 'telegraf'
+import { Context, Telegraf } from 'telegraf'
 
-export async function setCommands(bot: Telegraf) {
-  await bot.telegram.setMyCommands(
+export function setCommands(bot: Telegraf<Context>) {
+  bot.telegram.setMyCommands(
     [
       {command: "start", description: "Start bot"},
       {command: "help", description: "Start bot"},
