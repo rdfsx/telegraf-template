@@ -19,7 +19,6 @@ bot.use(ignoreOldMessageUpdates)
 bot.use(attachUser)
 bot.use(i18n.middleware(), attachI18N)
 // Commands
-bot.start((ctx) => ctx.reply(`Bot ${bot.botInfo.username} is up and running`))
 bot.command(['help', 'start'], sendHelp)
 bot.command('language', sendLanguage)
 bot.on("text", sendEcho)
