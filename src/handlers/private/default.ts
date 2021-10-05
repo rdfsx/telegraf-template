@@ -1,5 +1,5 @@
-import { Context } from 'telegraf'
+import { Telegraf } from 'telegraf'
 
-export async function sendEcho(ctx: Context<any>) {
-  await ctx.reply(ctx.message.text)
+export async function setupEchoHandler(bot: Telegraf) {
+  bot.on("text", async (ctx) => ctx.reply(ctx.message.text))
 }

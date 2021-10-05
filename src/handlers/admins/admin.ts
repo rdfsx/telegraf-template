@@ -1,27 +1,22 @@
-import { Context, Markup, Scenes } from 'telegraf'
+import { Telegraf, Markup as m, Scenes } from 'telegraf'
+
+const broadcastScene = new Scenes.BaseScene<Scenes.SceneContext>('broadcasting')
 
 
-const broadcastScene = new Scenes.BaseScene('BROADCAST_ADMIN')
+export async function setupAdminHandlers(bot: Telegraf) {
+  broadcastScene.command('broadcast', async (ctx) =>
+    ctx.reply('Введите сообщение, которое хотели бы отправить всем, кто есть в базе:',
+      m.inlineKeyboard([{text: "cancel", callback_data: "cancel"}])
+    ))
 
+  broadcastScene.action('cancel', async (ctx) => {
+    ctx.reply("Отменено.")
+    broadcastScene.leave()
+    }
+  )
 
-broadcastScene.enter((ctx) => {
-  ctx.session.myData = {};
-  ctx.reply('What is your drug?', Markup.inlineKeyboard([
-    Markup.callbackButton('Movie', MOVIE_ACTION),
-    Markup.callbackButton('Theater', THEATER_ACTION),
-  ]).extra());
-});
+  broadcastScene.on("message", async (ctx) => {
 
-
-export function broadcast(ctx: Context<any>) {
-  return ctx.reply("Введите сообщение:", Markup.inlineKeyboard([
-    Markup.button.callback("Отмена", "cancel")
-  ]))
-}
-
-export function cancelBroadcast(ctx: Context<any>) {
-
+  })
 
 }
-
-broadcastScene.use((ctx) => ctx.replyWithMarkdown('Please choose either Movie or Theater'));

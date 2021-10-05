@@ -26,3 +26,9 @@ export async function findUser(id: number) {
   }
   return user
 }
+
+export async function getAllUsers() {
+  return await UserModel.find({}, (err, users) => {
+    return users
+  })
+}
