@@ -13,14 +13,20 @@ import { setupHelpHandlers } from '@/handlers/private/help'
 import { setupEchoHandler } from '@/handlers/private/default'
 import { setCommands } from '@/utils/set_bot_commands'
 
-;(async function main() {
+;
+import { setupAdminHandlers } from '@/handlers/admins/admin'
+import { session } from 'telegraf'
+
+(async function main() {
 
   // Middlewares
   bot.use(ignoreOldMessageUpdates)
   bot.use(attachUser)
   bot.use(i18n.middleware(), attachI18N)
+  bot.use(session())
 
   // Commands & actions
+  await setupAdminHandlers(bot)
   await setupHelpHandlers(bot)
   await setupEchoHandler(bot)
 

@@ -1,3 +1,8 @@
-import { Telegraf } from 'telegraf'
+import { Scenes, Telegraf } from 'telegraf'
 
-export const bot = new Telegraf(process.env.TOKEN)
+
+export interface MongoSessionContext extends Scenes.SceneContext {
+  session: any
+}
+
+export const bot = new Telegraf<MongoSessionContext>(process.env.TOKEN)
